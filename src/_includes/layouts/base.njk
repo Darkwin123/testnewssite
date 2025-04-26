@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  {% if featured_image %}
+  <meta property="og:image" content="{{ site.url }}{{ featured_image }}">
+  {% endif %}
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="{{ site.twitter }}">
+  <meta name="twitter:title" content="{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}">
+  {% if featured_image %}
+  <meta name="twitter:image" content="{{ site.url }}{{ featured_image }}">
+  {% endif %}
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+  
+  <!-- Preload fonts -->
+  <link rel="preload" href="/assets/fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Preconnect to analytics domains -->
+  <link rel="preconnect" href="https://plausible.io">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- Custom page styles -->
+  {% block pagestyle %}{% endblock %}
+</head>
+<body class="{% if bodyClass %}{{ bodyClass }}{% endif %}">
+  <a href="#main-content" class="skip-link">Ga direct naar inhoud</a>
+  
+  <div class="site-wrapper">
+    {% include "components/header.njk" %}
+    
+    <main id="main-content" class="main-content">
+      {% block content %}
+        {{ content | safe }}
+      {% endblock %}
+    </main>
+    
+    {% include "components/footer.njk" %}
+  </div>
+  
+  <script src="/assets/js/main.js" defer></script>
+  
+  <!-- Custom page scripts -->
+  {% block pagescripts %}{% endblock %}
+  
+  <!-- Plausible Analytics (privacy-friendly) -->
+  <script defer data-domain="factcheck-vlaanderen.be" src="https://plausible.io/js/script.js"></script>
+</body>
+</html>

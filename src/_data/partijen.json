@@ -1,0 +1,65 @@
+[
+  {
+    "id": "open-vld",
+    "naam": "Open VLD",
+    "volleNaam": "Open Vlaamse Liberalen en Democraten",
+    "kleur": "#003D99",
+    "logo": "/assets/images/partijen/open-vld.svg",
+    "website": "https://www.openvld.be",
+    "twitter": "@openvld"
+  },
+  {
+    "id": "nva",
+    "naam": "N-VA",
+    "volleNaam": "Nieuw-Vlaamse Alliantie",
+    "kleur": "#FFBB00",
+    "logo": "/assets/images/partijen/nva.svg",
+    "website": "https://www.n-va.be",
+    "twitter": "@de_NVA"
+  },
+  {
+    "id": "vooruit",
+    "naam": "Vooruit",
+    "volleNaam": "Vooruit",
+    "kleur": "#FF0000",
+    "logo": "/assets/images/partijen/vooruit.svg",
+    "website": "https://www.vooruit.org",
+    "twitter": "@vooruit_nu"
+  },
+  {
+    "id": "cdv",
+    "naam": "CD&V",
+    "volleNaam": "Christen-Democratisch en Vlaams",
+    "kleur": "#FF6600",
+    "logo": "/assets/images/partijen/cdv.svg",
+    "website": "https://www.cdenv.be",
+    "twitter": "@cdenv"
+  },
+  {
+    "id": "groen",
+    "naam": "Groen",
+    "volleNaam": "Groen",
+    "kleur": "#84B414",
+    "logo": "/assets/images/partijen/groen.svg",
+    "website": "https://www.groen.be",
+    "twitter": "@groen"
+  },
+  {
+    "id": "vlaams-belang",
+    "naam": "Vlaams Belang",
+    "volleNaam": "Vlaams Belang",
+    "kleur": "#FFD700",
+    "logo": "/assets/images/partijen/vlaams-belang.svg",
+    "website": "https://www.vlaamsbelang.org",
+    "twitter": "@vlbelang"
+  },
+  {
+    "id": "pvda",
+    "naam": "PVDA",
+    "volleNaam": "Partij van de Arbeid",
+    "kleur": "#FF0000",
+    "logo": "/assets/images/partijen/pvda.svg",
+    "website": "https://www.pvda.be",
+    "twitter": "@pvdabelgie"
+  }
+]

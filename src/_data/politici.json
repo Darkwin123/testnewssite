@@ -1,0 +1,65 @@
+[
+  {
+    "id": "alexander-de-croo",
+    "naam": "Alexander De Croo",
+    "partij": "Open VLD",
+    "functie": "Premier",
+    "foto": "/assets/images/politici/alexander-de-croo.jpg",
+    "twitter": "@alexanderdecroo",
+    "bio": "Alexander De Croo is de huidige premier van België en lid van Open VLD."
+  },
+  {
+    "id": "bart-de-wever",
+    "naam": "Bart De Wever",
+    "partij": "N-VA",
+    "functie": "Burgemeester van Antwerpen",
+    "foto": "/assets/images/politici/bart-de-wever.jpg",
+    "twitter": "@Bart_DeWever",
+    "bio": "Bart De Wever is de burgemeester van Antwerpen en voorzitter van de N-VA."
+  },
+  {
+    "id": "conner-rousseau",
+    "naam": "Conner Rousseau",
+    "partij": "Vooruit",
+    "functie": "Partijvoorzitter",
+    "foto": "/assets/images/politici/conner-rousseau.jpg",
+    "twitter": "@conner_rousseau",
+    "bio": "Conner Rousseau is de voorzitter van Vooruit."
+  },
+  {
+    "id": "sammy-mahdi",
+    "naam": "Sammy Mahdi",
+    "partij": "CD&V",
+    "functie": "Partijvoorzitter",
+    "foto": "/assets/images/politici/sammy-mahdi.jpg",
+    "twitter": "@SammyMahdi",
+    "bio": "Sammy Mahdi is de voorzitter van CD&V."
+  },
+  {
+    "id": "petra-de-sutter",
+    "naam": "Petra De Sutter",
+    "partij": "Groen",
+    "functie": "Vice-premier",
+    "foto": "/assets/images/politici/petra-de-sutter.jpg",
+    "twitter": "@pdsutter",
+    "bio": "Petra De Sutter is vice-premier en minister van Ambtenarenzaken en Overheidsbedrijven."
+  },
+  {
+    "id": "tom-van-grieken",
+    "naam": "Tom Van Grieken",
+    "partij": "Vlaams Belang",
+    "functie": "Partijvoorzitter",
+    "foto": "/assets/images/politici/tom-van-grieken.jpg",
+    "twitter": "@tomvangrieken",
+    "bio": "Tom Van Grieken is de voorzitter van Vlaams Belang."
+  },
+  {
+    "id": "raoul-hedebouw",
+    "naam": "Raoul Hedebouw",
+    "partij": "PVDA",
+    "functie": "Partijvoorzitter",
+    "foto": "/assets/images/politici/raoul-hedebouw.jpg",
+    "twitter": "@RaoulHedebouw",
+    "bio": "Raoul Hedebouw is de voorzitter van PVDA."
+  }
+]

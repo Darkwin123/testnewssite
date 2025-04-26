@@ -1,0 +1,71 @@
+<div class="verdict">
+  <div class="verdict-header">
+    <div class="verdict-icon">
+      {% set iconName = verdict | verdictIcon %}
+      {% if iconName == "check-circle" %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-check-circle">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      {% elif iconName == "check-circle-dashed" %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-check-circle-dashed">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke-dasharray="4 4"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+      {% elif iconName == "x-circle" %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-x-circle">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+      {% elif iconName == "x-circle-dashed" %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-x-circle-dashed">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke-dasharray="4 4"></path>
+          <path d="m15 9-6 6"></path>
+          <path d="m9 9 6 6"></path>
+        </svg>
+      {% elif iconName == "divide-circle" %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-divide-circle">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="8" y1="12" x2="16" y2="12"></line>
+          <line x1="12" y1="16" x2="12" y2="16"></line>
+          <line x1="12" y1="8" x2="12" y2="8"></line>
+        </svg>
+      {% elif iconName == "alert-circle" %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-alert-circle">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      {% else %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-help-circle">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      {% endif %}
+    </div>
+    <div class="verdict-label">
+      <span class="verdict-title">Verdict</span>
+      <strong class="verdict-result">{{ verdict }}</strong>
+    </div>
+  </div>
+  
+  {% if verdict_explanation %}
+  <div class="verdict-explanation">
+    <p>{{ verdict_explanation }}</p>
+  </div>
+  {% endif %}
+  
+  {% if show_verdict_scale %}
+  <div class="verdict-scale">
+    <div class="scale-track">
+      {% for level in site.verdictLevels %}
+      <div class="scale-mark scale-mark--{{ level.name | lower | slug }} {% if level.name|lower == verdict|lower %}scale-mark--active{% endif %}" title="{{ level.name }}: {{ level.description }}">
+        <span class="scale-tooltip">{{ level.name }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>

@@ -1,0 +1,36 @@
+<div class="search-module">
+  <form role="search" aria-label="Zoek door alle factchecks" action="/search/" method="get" class="search-form">
+    <div class="search-input-wrapper">
+      <label for="search-query" class="sr-only">Zoek factchecks</label>
+      <input 
+        type="search" 
+        name="q" 
+        id="search-query" 
+        class="search-input" 
+        placeholder="Zoek factchecks op politicus, partij of onderwerp..." 
+        autocomplete="off"
+        required
+      >
+      <button type="submit" class="search-submit">
+        <span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-search">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <span class="button-text">Zoeken</span>
+      </button>
+    </div>
+  </form>
+  
+  <div class="search-suggestions">
+    <h3 class="suggestions-title">Populaire zoekopdrachten:</h3>
+    <ul class="suggestions-list">
+      <li><a href="/search/?q=belastingen">belastingen</a></li>
+      <li><a href="/search/?q=immigratie">immigratie</a></li>
+      <li><a href="/search/?q=klimaat">klimaat</a></li>
+      <li><a href="/search/?q=pensioenen">pensioenen</a></li>
+      <li><a href="/search/?q=werkgelegenheid">werkgelegenheid</a></li>
+    </ul>
+  </div>
+</div>

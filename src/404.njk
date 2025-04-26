@@ -1,0 +1,88 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+eleventyExcludeFromCollections: true
+title: Pagina niet gevonden
+description: Deze pagina bestaat niet of is verplaatst.
+---
+
+<div class="error-container">
+  <div class="container container-narrow">
+    <h1 class="error-title">404</h1>
+    <h2 class="error-subtitle">Pagina niet gevonden</h2>
+    <p class="error-description">De pagina die u zoekt bestaat niet of is verplaatst naar een andere locatie.</p>
+    
+    <div class="error-actions">
+      <a href="/" class="btn btn-primary">Terug naar homepage</a>
+      <a href="/search/" class="btn btn-outline">Zoeken op de site</a>
+    </div>
+    
+    <div class="error-fact">
+      <h3>Factcheck:</h3>
+      <p><strong>Uitspraak:</strong> "Deze pagina bestaat."</p>
+      <p><strong>Verdict:</strong> <span class="verdict-badge verdict-onwaar">Onwaar</span></p>
+      <p>We hebben uitgebreid onderzoek gedaan en kunnen met zekerheid stellen dat deze pagina niet bestaat in onze database.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .error-container {
+    text-align: center;
+    padding: var(--spacing-xxl) 0;
+  }
+  
+  .error-title {
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1;
+  }
+  
+  .error-subtitle {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .error-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+  }
+  
+  .error-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xxl);
+  }
+  
+  .error-fact {
+    background-color: var(--color-background-alt);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .error-fact h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  @media (max-width: 768px) {
+    .error-title {
+      font-size: 4rem;
+    }
+    
+    .error-subtitle {
+      font-size: 1.5rem;
+    }
+    
+    .error-actions {
+      flex-direction: column;
+    }
+  }
+</style>

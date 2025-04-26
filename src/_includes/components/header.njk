@@ -1,0 +1,65 @@
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="site-branding">
+        <a href="/" class="logo" aria-label="{{ site.title }}">
+          <img src="{{ site.logo }}" alt="{{ site.title }}" width="180" height="40">
+        </a>
+      </div>
+      
+      <nav class="main-navigation" aria-label="Hoofdnavigatie">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu">
+          <span class="menu-toggle-icon"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        
+        <ul id="primary-menu" class="menu">
+          {% for item in site.navigation %}
+          <li class="menu-item {% if page.url == item.url %}active{% endif %}">
+            <a href="{{ item.url }}" {% if page.url == item.url %}aria-current="page"{% endif %}>
+              {{ item.name }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <button class="search-toggle" aria-expanded="false" aria-controls="header-search">
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-search">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <span class="sr-only">Zoeken</span>
+        </button>
+        
+        <div id="header-search" class="header-search" hidden>
+          <form role="search" aria-label="Zoeken op de site" action="/search/" method="get">
+            <label for="header-search-input" class="sr-only">Zoeken</label>
+            <input type="search" id="header-search-input" name="q" placeholder="Zoek factchecks..." required>
+            <button type="submit" class="search-submit">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-search">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
+              <span class="sr-only">Zoeken</span>
+            </button>
+            <button type="button" class="search-close">
+              <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-x">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </span>
+              <span class="sr-only">Sluiten</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

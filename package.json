@@ -1,0 +1,39 @@
+{
+  "name": "factcheck-vlaanderen",
+  "version": "1.0.0",
+  "description": "Onafhankelijke fact-checking van politieke uitspraken in België",
+  "main": ".eleventy.js",
+  "scripts": {
+    "dev": "eleventy --serve --quiet",
+    "build": "npm-run-all build:css build:site",
+    "build:site": "cross-env ELEVENTY_ENV=production eleventy --formats=html,md,njk,scss",
+    "build:css": "sass src/assets/scss:src/assets/css --style=compressed",
+    "watch:css": "sass src/assets/scss:src/assets/css --watch",
+    "debug": "DEBUG=* eleventy",
+    "start": "npm-run-all --parallel dev watch:css"
+  },
+  "keywords": [
+    "factcheck",
+    "vlaanderen",
+    "belgie",
+    "politiek",
+    "journalistiek",
+    "11ty",
+    "eleventy"
+  ],
+  "author": "FactCheck Vlaanderen Team",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@minify-html/node": "^0.16.4",
+    "clean-css": "^5.3.2",
+    "html-minifier": "^4.0.0",
+    "luxon": "^3.3.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.62.1"
+  }
+}

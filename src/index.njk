@@ -1,0 +1,216 @@
+---
+layout: layouts/base.njk
+bodyClass: home-template
+eleventyImport:
+  collections: ["factchecks"]
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="site-title">FactCheck Vlaanderen</h1>
+      <p class="site-tagline">Onafhankelijke fact-checking van politieke uitspraken in België</p>
+    </div>
+    
+    <div class="search-container">
+      {% include "components/search.njk" %}
+    </div>
+  </div>
+</section>
+
+<section class="featured-factchecks">
+  <div class="container">
+    <h2 class="section-title">Nieuwste Factchecks</h2>
+    
+    <div class="featured-grid">
+      {% set featuredFactcheck = collections.factchecks | sort(true, false, "date") | first %}
+      
+      <div class="featured-main">
+        <article class="factcheck-card factcheck-card--featured">
+          <a href="{{ featuredFactcheck.url }}" class="factcheck-card__link">
+            {% if featuredFactcheck.data.featured_image %}
+            <div class="factcheck-card__image-container">
+              <img 
+                src="{{ featuredFactcheck.data.featured_image }}" 
+                alt="{{ featuredFactcheck.data.imageAlt or featuredFactcheck.data.title }}" 
+                class="factcheck-card__image"
+                width="800" 
+                height="450"
+                loading="eager"
+              >
+            </div>
+            {% endif %}
+            
+            <div class="factcheck-card__content">
+              <h3 class="factcheck-card__title">{{ featuredFactcheck.data.title }}</h3>
+              
+              <div class="factcheck-card__meta">
+                <time datetime="{{ featuredFactcheck.date | isoDate }}">{{ featuredFactcheck.date | readableDate }}</time>
+                
+                <div class="factcheck-card__verdict verdict-{{ featuredFactcheck.data.verdict | lower | slug }}">
+                  {{ featuredFactcheck.data.verdict }}
+                </div>
+              </div>
+              
+              <p class="factcheck-card__summary">{{ featuredFactcheck.data.samenvatting }}</p>
+            </div>
+          </a>
+        </article>
+      </div>
+      
+      <div class="featured-sidebar">
+        {% set recentFactchecks = collections.factchecks | sort(true, false, "date") | slice(1, 4) %}
+        
+        {% for factcheck in recentFactchecks %}
+        <article class="factcheck-card factcheck-card--compact">
+          <a href="{{ factcheck.url }}" class="factcheck-card__link">
+            {% if factcheck.data.featured_image %}
+            <div class="factcheck-card__image-container">
+              <img 
+                src="{{ factcheck.data.featured_image }}" 
+                alt="{{ factcheck.data.imageAlt or factcheck.data.title }}" 
+                class="factcheck-card__image"
+                width="400" 
+                height="225"
+                loading="lazy"
+              >
+            </div>
+            {% endif %}
+            
+            <div class="factcheck-card__content">
+              <h3 class="factcheck-card__title">{{ factcheck.data.title }}</h3>
+              
+              <div class="factcheck-card__meta">
+                <time datetime="{{ factcheck.date | isoDate }}">{{ factcheck.date | readableDate }}</time>
+                
+                <div class="factcheck-card__verdict verdict-{{ factcheck.data.verdict | lower | slug }}">
+                  {{ factcheck.data.verdict }}
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="category-sections">
+  <div class="container">
+    <div class="category-grid">
+      <div class="category-section">
+        <header class="category-header">
+          <h2 class="category-title">Politiek</h2>
+          <a href="/factchecks/politiek/" class="category-link">Bekijk alle politieke factchecks</a>
+        </header>
+        
+        <div class="category-content">
+          {% set politiekFactchecks = collections.politiek | sort(true, false, "date") | slice(0, 3) %}
+          
+          {% for factcheck in politiekFactchecks %}
+          <article class="factcheck-card factcheck-card--horizontal">
+            <a href="{{ factcheck.url }}" class="factcheck-card__link">
+              {% if factcheck.data.featured_image %}
+              <div class="factcheck-card__image-container">
+                <img 
+                  src="{{ factcheck.data.featured_image }}" 
+                  alt="{{ factcheck.data.imageAlt or factcheck.data.title }}" 
+                  class="factcheck-card__image"
+                  width="300" 
+                  height="170"
+                  loading="lazy"
+                >
+              </div>
+              {% endif %}
+              
+              <div class="factcheck-card__content">
+                <h3 class="factcheck-card__title">{{ factcheck.data.title }}</h3>
+                
+                <div class="factcheck-card__meta">
+                  <time datetime="{{ factcheck.date | isoDate }}">{{ factcheck.date | readableDate }}</time>
+                  
+                  <div class="factcheck-card__verdict verdict-{{ factcheck.data.verdict | lower | slug }}">
+                    {{ factcheck.data.verdict }}
+                  </div>
+                </div>
+              </div>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="category-section">
+        <header class="category-header">
+          <h2 class="category-title">Economie</h2>
+          <a href="/factchecks/economie/" class="category-link">Bekijk alle economische factchecks</a>
+        </header>
+        
+        <div class="category-content">
+          {% set economieFactchecks = collections.economie | sort(true, false, "date") | slice(0, 3) %}
+          
+          {% for factcheck in economieFactchecks %}
+          <article class="factcheck-card factcheck-card--horizontal">
+            <a href="{{ factcheck.url }}" class="factcheck-card__link">
+              {% if factcheck.data.featured_image %}
+              <div class="factcheck-card__image-container">
+                <img 
+                  src="{{ factcheck.data.featured_image }}" 
+                  alt="{{ factcheck.data.imageAlt or factcheck.data.title }}" 
+                  class="factcheck-card__image"
+                  width="300" 
+                  height="170"
+                  loading="lazy"
+                >
+              </div>
+              {% endif %}
+              
+              <div class="factcheck-card__content">
+                <h3 class="factcheck-card__title">{{ factcheck.data.title }}</h3>
+                
+                <div class="factcheck-card__meta">
+                  <time datetime="{{ factcheck.date | isoDate }}">{{ factcheck.date | readableDate }}</time>
+                  
+                  <div class="factcheck-card__verdict verdict-{{ factcheck.data.verdict | lower | slug }}">
+                    {{ factcheck.data.verdict }}
+                  </div>
+                </div>
+              </div>
+            </a>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="call-to-action">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">Heb je een uitspraak die gecheckt moet worden?</h2>
+      <p class="cta-text">Stuur ons een tip over een politieke uitspraak die je graag gecheckt wilt zien.</p>
+      <a href="/paginas/contact/" class="btn btn-primary">Stuur een tip</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <h2 class="about-title">Over FactCheck Vlaanderen</h2>
+        <p>FactCheck Vlaanderen is een onafhankelijk platform dat politieke uitspraken onderzoekt op basis van feiten, data en statistieken. Onze missie is om burgers te helpen geïnformeerde beslissingen te nemen door accurate en betrouwbare informatie te bieden.</p>
+        <p>Ons team van ervaren journalisten en experts analyseert zorgvuldig elke uitspraak op basis van grondige research.</p>
+        <a href="/paginas/over-ons/" class="btn btn-outline">Meer over ons</a>
+      </div>
+      
+      <div class="methodology-content">
+        <h2 class="methodology-title">Onze methodologie</h2>
+        <p>We volgen een strikt protocol bij het factchecken van uitspraken. Dit omvat het identificeren van de oorspronkelijke bron, het verzamelen van relevante gegevens, het raadplegen van experts, en het toekennen van een verdict op basis van nauwkeurig onderzoek.</p>
+        <a href="/paginas/methodologie/" class="btn btn-outline">Lees over onze methodologie</a>
+      </div>
+    </div>
+  </div>
+</section>
