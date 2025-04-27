@@ -7,3 +7,61 @@
   "twitter": "@factcheckvla",
   "facebook": "factcheckvlaanderen",
   "logo": "/assets/images/logo.svg",
+  "lang": "nl-BE",
+  "verdictLevels": [
+    {
+      "name": "Waar",
+      "description": "De uitspraak is volledig correct en bevat geen misleidende elementen."
+    },
+    {
+      "name": "Grotendeels waar",
+      "description": "De uitspraak is grotendeels correct, maar bevat kleine onnauwkeurigheden of ontbrekende nuance."
+    },
+    {
+      "name": "Half waar",
+      "description": "De uitspraak bevat zowel ware als onware elementen, of is te simplistisch voor een complex onderwerp."
+    },
+    {
+      "name": "Grotendeels onwaar",
+      "description": "De uitspraak bevat enkele correcte elementen maar is overwegend onjuist of misleidend."
+    },
+    {
+      "name": "Onwaar",
+      "description": "De uitspraak is volledig onjuist, er is geen waarheid in te vinden."
+    },
+    {
+      "name": "Misleidend",
+      "description": "De uitspraak is technisch gezien mogelijk juist, maar mist cruciale context of wordt op een misleidende manier gepresenteerd."
+    }
+  ],
+  "navigation": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Politiek",
+      "url": "/factchecks/politiek/"
+    },
+    {
+      "name": "Economie",
+      "url": "/factchecks/economie/"
+    },
+    {
+      "name": "Gezondheid",
+      "url": "/factchecks/gezondheid/"
+    },
+    {
+      "name": "Over Ons",
+      "url": "/paginas/over-ons/"
+    },
+    {
+      "name": "Methodologie",
+      "url": "/paginas/methodologie/"
+    },
+    {
+      "name": "Contact",
+      "url": "/paginas/contact/"
+    }
+  ]
+}

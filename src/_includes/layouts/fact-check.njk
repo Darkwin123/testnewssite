@@ -1,4 +1,121 @@
-<div class="factcheck-footer container">
+---
+layout: layouts/base.njk
+bodyClass: fact-check-template
+---
+
+<article class="fact-check">
+  <header class="fact-check-header">
+    <div class="container">
+      <div class="categories">
+        {% for category in categories %}
+          <a href="/factchecks/{{ category | slug }}/" class="category-tag">{{ category }}</a>
+        {% endfor %}
+      </div>
+      
+      <h1 class="fact-check-title">{{ title }}</h1>
+      
+      <div class="fact-check-meta">
+        <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+        <span class="byline">Door <span class="author">{{ author }}</span></span>
+      </div>
+      
+      {% if citaat %}
+      <div class="quote-container">
+        <blockquote class="politician-quote">
+          <p>"{{ citaat }}"</p>
+          <footer>
+            {% set politicusData = politici | find(politicus, "id") %}
+            <div class="politician-info">
+              {% if politicusData.foto %}
+              <img src="{{ politicusData.foto }}" alt="{{ politicusData.naam }}" class="politician-image">
+              {% endif %}
+              <div class="politician-meta">
+                <cite>{{ politicusData.naam }}</cite>
+                <span class="politician-party">{{ politicusData.partij }}</span>
+                <span class="quote-source">{{ citaatBron }}</span>
+                <time datetime="{{ citaatDatum | isoDate }}">{{ citaatDatum | readableDate }}</time>
+              </div>
+            </div>
+          </footer>
+        </blockquote>
+      </div>
+      {% endif %}
+      
+      <div class="verdict-box verdict-{{ verdict | lower | slug }}" role="status" aria-label="Factcheck uitslag: {{ verdict }}">
+        {% include "components/verdict.njk" %}
+      </div>
+    </div>
+  </header>
+  
+  <div class="fact-check-content container">
+    <div class="content-main">
+      <div class="summary-box">
+        <h2>Samenvatting</h2>
+        <p>{{ samenvatting }}</p>
+      </div>
+      
+      <div class="fact-check-body">
+        {{ content | safe }}
+      </div>
+      
+      {% if bronnen %}
+      <div class="sources">
+        <h2>Bronnen</h2>
+        <ul class="source-list">
+          {% for bron in bronnen %}
+          <li class="source-item">
+            <a href="{{ bron.url }}" target="_blank" rel="noopener">{{ bron.naam }}</a>
+            {% if bron.datum %}
+            <span class="source-date">{{ bron.datum | readableDate }}</span>
+            {% endif %}
+            {% if bron.beschrijving %}
+            <p class="source-description">{{ bron.beschrijving }}</p>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    
+    <aside class="content-sidebar">
+      <div class="related-box">
+        <h3>Verwante factchecks</h3>
+        <ul class="related-list">
+          {% set relatedPosts = collections.factchecks | related(tags, page.url, 3) %}
+          {% for related in relatedPosts %}
+            <li class="related-item">
+              <a href="{{ related.url }}">{{ related.data.title }}</a>
+              <span class="verdict-badge verdict-{{ related.data.verdict | lower | slug }}">{{ related.data.verdict }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      {% if politicus %}
+      {% set politicusData = politici | find(politicus, "id") %}
+      <div class="politician-box">
+        <h3>Over {{ politicusData.naam }}</h3>
+        <div class="politician-card">
+          {% if politicusData.foto %}
+          <img src="{{ politicusData.foto }}" alt="{{ politicusData.naam }}" class="politician-portrait">
+          {% endif %}
+          <div class="politician-details">
+            <h4>{{ politicusData.naam }}</h4>
+            <p class="politician-role">{{ politicusData.functie }}</p>
+            <p class="politician-party">{{ politicusData.partij }}</p>
+            {% if politicusData.twitter %}
+            <a href="https://twitter.com/{{ politicusData.twitter | replace('@', '') }}" class="politician-twitter" target="_blank" rel="noopener">{{ politicusData.twitter }}</a>
+            {% endif %}
+          </div>
+        </div>
+        <a href="/politici/{{ politicus }}/" class="btn btn-outline">Alle factchecks over {{ politicusData.naam }}</a>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+  
+  <div class="factcheck-footer container">
     <div class="share-section">
       <h3>Deel deze factcheck</h3>
       {% include "components/share-buttons.njk" %}
@@ -9,3 +126,4 @@
       <p>Heb je een fout gevonden of wil je aanvullende informatie delen? <a href="/paginas/contact/">Neem contact met ons op</a>.</p>
     </div>
   </div>
+</article>
