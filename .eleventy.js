@@ -148,17 +148,37 @@ module.exports = function(eleventyConfig) {
   });
   
   // Create collections by category
-  eleventyConfig.addCollection("politiek", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/factchecks/politiek/*.md");
+eleventyConfig.addCollection("politiek", function(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/factchecks/politiek/*.md");
+});
+
+eleventyConfig.addCollection("economie", function(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/factchecks/economie/*.md");
+});
+
+eleventyConfig.addCollection("gezondheid", function(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/factchecks/gezondheid/*.md");
+});
+
+eleventyConfig.addCollection("europa", function(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/factchecks/europa/*.md");
+});
+
+eleventyConfig.addCollection("migratie", function(collectionApi) {
+  return collectionApi.getFilteredByGlob("src/factchecks/migratie/*.md");
+});
+
+// Alternative collection method by category tag
+eleventyConfig.addCollection("categoriesByTag", function(collectionApi) {
+  const categories = ["Politiek", "Economie", "Gezondheid", "Europa", "Migratie"];
+  let result = {};
+  
+  categories.forEach(category => {
+    result[category.toLowerCase()] = collectionApi.getFilteredByTags("factchecks", category);
   });
   
-  eleventyConfig.addCollection("economie", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/factchecks/economie/*.md");
-  });
-  
-  eleventyConfig.addCollection("gezondheid", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/factchecks/gezondheid/*.md");
-  });
+  return result;
+});
   
   // Utility filters
   eleventyConfig.addFilter("slice", function(array, start, end) {

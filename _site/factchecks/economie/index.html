@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FactCheck Vlaanderen</title>
-  <meta name="description" content="Onafhankelijke fact-checking van politieke uitspraken in België">
+  <title>Economische Factchecks | FactCheck Vlaanderen | FactCheck Vlaanderen</title>
+  <meta name="description" content="Fact-checking van economische uitspraken en statistieken in België">
   
   <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="FactCheck Vlaanderen">
-  <meta property="og:description" content="Onafhankelijke fact-checking van politieke uitspraken in België">
-  <meta property="og:url" content="https://factcheck-vlaanderen.be/">
+  <meta property="og:title" content="Economische Factchecks | FactCheck Vlaanderen | FactCheck Vlaanderen">
+  <meta property="og:description" content="Fact-checking van economische uitspraken en statistieken in België">
+  <meta property="og:url" content="https://factcheck-vlaanderen.be/factchecks/economie/">
   <meta property="og:type" content="website">
   
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@factcheckvla">
-  <meta name="twitter:title" content="FactCheck Vlaanderen">
-  <meta name="twitter:description" content="Onafhankelijke fact-checking van politieke uitspraken in België">
+  <meta name="twitter:title" content="Economische Factchecks | FactCheck Vlaanderen | FactCheck Vlaanderen">
+  <meta name="twitter:description" content="Fact-checking van economische uitspraken en statistieken in België">
   
   
   <!-- Favicon -->
@@ -36,7 +36,7 @@
   <!-- Custom page styles -->
   
 </head>
-<body class="home-template">
+<body class="category-template">
   <a href="#main-content" class="skip-link">Ga direct naar inhoud</a>
   
   <div class="site-wrapper">
@@ -57,8 +57,8 @@
         
         <ul id="primary-menu" class="menu">
           
-          <li class="menu-item active">
-            <a href="/" aria-current="page">
+          <li class="menu-item ">
+            <a href="/" >
               Home
             </a>
           </li>
@@ -69,8 +69,8 @@
             </a>
           </li>
           
-          <li class="menu-item ">
-            <a href="/factchecks/economie/" >
+          <li class="menu-item active">
+            <a href="/factchecks/economie/" aria-current="page">
               Economie
             </a>
           </li>
@@ -145,250 +145,296 @@
     <main id="main-content" class="main-content">
       
         
-<section class="hero">
+<section class="category-header">
   <div class="container">
-    <div class="hero-content">
-      <h1 class="site-title">FactCheck Vlaanderen</h1>
-      <p class="site-tagline">Onafhankelijke fact-checking van politieke uitspraken in België</p>
+    <h1 class="category-page-title">Economische Factchecks</h1>
+    
+    <p class="category-page-description">Onafhankelijke verificatie van uitspraken over de Belgische economie, belastingen, werkgelegenheid en andere economische kwesties.</p>
+    
+  </div>
+</section>
+
+<section class="category-content">
+  <div class="container">
+    <div class="debug-info" style="margin-bottom: 20px; padding: 15px; background: #f8f8f8; border: 1px solid #ddd;">
+      <p><strong>Debug Info:</strong></p>
+      <p>Category name: economie</p>
+      <p>Collection size: 
+        
+          0 items
+        
+      </p>
+      
+      <p>All collections:
+            gezondheidszorg(1), 
+          
+            ziekenhuizen(1), 
+          
+            europa(1), 
+          
+            internationale vergelijking(3), 
+          
+            belastingen(1), 
+          
+            economie(0), 
+          
+            subsidies(1), 
+          
+            begroting(1), 
+          
+            politiek(1), 
+          
+            gezondheid(1), 
+          
+            migratie(0), 
+          
+            categoriesByTag()
+          </p>
     </div>
     
-    <div class="search-container">
-      <div class="search-module">
-  <form role="search" aria-label="Zoek door alle factchecks" action="/search/" method="get" class="search-form">
-    <div class="search-input-wrapper">
-      <label for="search-query" class="sr-only">Zoek factchecks</label>
-      <input 
-        type="search" 
-        name="q" 
-        id="search-query" 
-        class="search-input" 
-        placeholder="Zoek factchecks op politicus, partij of onderwerp..." 
-        autocomplete="off"
-        required
-      >
-      <button type="submit" class="search-submit">
-        <span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-search">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </span>
-        <span class="button-text">Zoeken</span>
-      </button>
+    <div class="category-toolbar">
+      <div class="category-filter">
+        <label for="verdict-filter" class="filter-label">Filter op verdict:</label>
+        <select id="verdict-filter" class="filter-select">
+          <option value="all">Alle verdicts</option>
+          <option value="waar">Waar</option>
+          <option value="grotendeels-waar">Grotendeels waar</option>
+          <option value="half-waar">Half waar</option>
+          <option value="grotendeels-onwaar">Grotendeels onwaar</option>
+          <option value="onwaar">Onwaar</option>
+          <option value="misleidend">Misleidend</option>
+        </select>
+      </div>
+      
+      <div class="category-sort">
+        <label for="sort-order" class="filter-label">Sorteren op:</label>
+        <select id="sort-order" class="filter-select">
+          <option value="date-desc">Nieuwste eerst</option>
+          <option value="date-asc">Oudste eerst</option>
+          <option value="title-asc">Titel (A-Z)</option>
+          <option value="title-desc">Titel (Z-A)</option>
+        </select>
+      </div>
     </div>
-  </form>
+    
+    <div class="factcheck-grid">
+      
+        <div class="no-results">
+          <p>Geen factchecks gevonden in deze categorie.</p>
+          <p><small>De collectie "economie" bevat geen artikelen of bestaat niet.</small></p>
+        </div>
+      
+    </div>
+    
+    <div class="no-filter-results" style="display: none;">
+      <p>Geen factchecks gevonden die aan de geselecteerde criteria voldoen.</p>
+      <button class="btn btn-primary reset-filters">Reset filters</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .category-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-xl);
+  }
   
-  <div class="search-suggestions">
-    <h3 class="suggestions-title">Populaire zoekopdrachten:</h3>
-    <ul class="suggestions-list">
-      <li><a href="/search/?q=belastingen">belastingen</a></li>
-      <li><a href="/search/?q=immigratie">immigratie</a></li>
-      <li><a href="/search/?q=klimaat">klimaat</a></li>
-      <li><a href="/search/?q=pensioenen">pensioenen</a></li>
-      <li><a href="/search/?q=werkgelegenheid">werkgelegenheid</a></li>
-    </ul>
-  </div>
-</div>
-    </div>
-  </div>
-</section>
-
-<section class="featured-factchecks">
-  <div class="container">
-    <h2 class="section-title">Nieuwste Factchecks</h2>
+  .category-page-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    color: white;
+  }
+  
+  .category-page-description {
+    font-size: 1.2rem;
+    max-width: 800px;
+    opacity: 0.9;
+  }
+  
+  .category-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--color-background-alt);
+    border-radius: var(--border-radius-md);
+  }
+  
+  .filter-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: var(--spacing-sm);
+  }
+  
+  .filter-select {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    background-color: white;
+  }
+  
+  .factcheck-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .no-results, .no-filter-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background-color: var(--color-background-alt);
+    border-radius: var(--border-radius-lg);
+  }
+  
+  .pagination {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+  }
+  
+  .pagination-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .pagination-item {
+    margin: 0 var(--spacing-xs);
+  }
+  
+  .pagination-item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-background-alt);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+  
+  .pagination-item a:hover {
+    background-color: var(--color-primary-light);
+    color: white;
+  }
+  
+  .pagination-item.active a {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  
+  .factcheck-card {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .factcheck-card.filtered-out {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .category-toolbar {
+      flex-direction: column;
+      gap: var(--spacing-md);
+      align-items: flex-start;
+    }
     
-    <div class="featured-grid">
-      
-      
-      <div class="featured-main">
-        <article class="factcheck-card factcheck-card--featured">
-          <a href="/factchecks/politiek/belgie-hoogste-belastingdruk-europa/" class="factcheck-card__link">
-            
-            <div class="factcheck-card__image-container">
-              <img 
-                src="/assets/images/factchecks/belastingdruk-europa.jpg" 
-                alt="Grafiek die de belastingdruk in verschillende Europese landen vergelijkt" 
-                class="factcheck-card__image"
-                width="800" 
-                height="450"
-                loading="eager"
-              >
-            </div>
-            
-            
-            <div class="factcheck-card__content">
-              <h3 class="factcheck-card__title">Heeft België de hoogste belastingdruk van Europa?</h3>
-              
-              <div class="factcheck-card__meta">
-                <time datetime="2023-06-15T02:00:00.000+02:00">15 juni 2023</time>
-                
-                <div class="factcheck-card__verdict verdict-grotendeels-waar">
-                  Grotendeels waar
-                </div>
-              </div>
-              
-              <p class="factcheck-card__summary">Volgens recent cijfermateriaal van Eurostat en de OESO behoort België consistent tot de top 3 landen in Europa wat betreft de totale belastingdruk als percentage van het bbp. De exacte rangschikking varieert licht tussen verschillende jaren en meetmethodes, waarbij België soms op de eerste plaats staat, maar vaker net onder Frankrijk of Denemarken. De uitspraak is dus grotendeels waar, maar bevat een lichte overdrijving.</p>
-            </div>
-          </a>
-        </article>
-      </div>
-      
-      <div class="featured-sidebar">
-        
-        
-        
-        <article class="factcheck-card factcheck-card--compact">
-          <a href="/factchecks/europa/eu-subsidies-belgie/" class="factcheck-card__link">
-            
-            <div class="factcheck-card__image-container">
-              <img 
-                src="/assets/images/factchecks/eu-vlag.jpg" 
-                alt="Vlag van de Europese Unie wapperend voor het Europees Parlement" 
-                class="factcheck-card__image"
-                width="400" 
-                height="225"
-                loading="lazy"
-              >
-            </div>
-            
-            
-            <div class="factcheck-card__content">
-              <h3 class="factcheck-card__title">Is België een nettobetaler aan de EU?</h3>
-              
-              <div class="factcheck-card__meta">
-                <time datetime="2023-07-05T02:00:00.000+02:00">5 juli 2023</time>
-                
-                <div class="factcheck-card__verdict verdict-waar">
-                  Waar
-                </div>
-              </div>
-            </div>
-          </a>
-        </article>
-        
-        <article class="factcheck-card factcheck-card--compact">
-          <a href="/factchecks/gezondheid/ziekenhuisbedden-in-belgie/" class="factcheck-card__link">
-            
-            <div class="factcheck-card__image-container">
-              <img 
-                src="/assets/images/factchecks/ziekenhuisbedden-europa.jpg" 
-                alt="Ziekenhuisbed in een Belgisch ziekenhuis" 
-                class="factcheck-card__image"
-                width="400" 
-                height="225"
-                loading="lazy"
-              >
-            </div>
-            
-            
-            <div class="factcheck-card__content">
-              <h3 class="factcheck-card__title">Heeft België meer ziekenhuisbedden per inwoner dan het EU-gemiddelde?</h3>
-              
-              <div class="factcheck-card__meta">
-                <time datetime="2023-08-12T02:00:00.000+02:00">12 augustus 2023</time>
-                
-                <div class="factcheck-card__verdict verdict-waar">
-                  Waar
-                </div>
-              </div>
-            </div>
-          </a>
-        </article>
-        
-      </div>
-    </div>
-  </div>
-</section>
+    .factcheck-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .category-page-title {
+      font-size: 2rem;
+    }
+  }
+</style>
 
-<section class="category-sections">
-  <div class="container">
-    <div class="category-grid">
-      <div class="category-section">
-        <header class="category-header">
-          <h2 class="category-title">Politiek</h2>
-          <a href="/factchecks/politiek/" class="category-link">Bekijk alle politieke factchecks</a>
-        </header>
-        
-        <div class="category-content">
-          
-          
-          
-          <article class="factcheck-card factcheck-card--horizontal">
-            <a href="/factchecks/politiek/belgie-hoogste-belastingdruk-europa/" class="factcheck-card__link">
-              
-              <div class="factcheck-card__image-container">
-                <img 
-                  src="/assets/images/factchecks/belastingdruk-europa.jpg" 
-                  alt="Grafiek die de belastingdruk in verschillende Europese landen vergelijkt" 
-                  class="factcheck-card__image"
-                  width="300" 
-                  height="170"
-                  loading="lazy"
-                >
-              </div>
-              
-              
-              <div class="factcheck-card__content">
-                <h3 class="factcheck-card__title">Heeft België de hoogste belastingdruk van Europa?</h3>
-                
-                <div class="factcheck-card__meta">
-                  <time datetime="2023-06-15T02:00:00.000+02:00">15 juni 2023</time>
-                  
-                  <div class="factcheck-card__verdict verdict-grotendeels-waar">
-                    Grotendeels waar
-                  </div>
-                </div>
-              </div>
-            </a>
-          </article>
-          
-        </div>
-      </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const verdictFilter = document.getElementById('verdict-filter');
+    const sortOrder = document.getElementById('sort-order');
+    const factcheckCards = document.querySelectorAll('.factcheck-card');
+    const factcheckGrid = document.querySelector('.factcheck-grid');
+    const noFilterResults = document.querySelector('.no-filter-results');
+    const resetButton = document.querySelector('.reset-filters');
+    
+    if (verdictFilter && sortOrder && factcheckGrid) {
+      // Filter by verdict
+      verdictFilter.addEventListener('change', applyFilters);
       
-      <div class="category-section">
-        <header class="category-header">
-          <h2 class="category-title">Economie</h2>
-          <a href="/factchecks/economie/" class="category-link">Bekijk alle economische factchecks</a>
-        </header>
-        
-        <div class="category-content">
-          
-          
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="call-to-action">
-  <div class="container">
-    <div class="cta-content">
-      <h2 class="cta-title">Heb je een uitspraak die gecheckt moet worden?</h2>
-      <p class="cta-text">Stuur ons een tip over een politieke uitspraak die je graag gecheckt wilt zien.</p>
-      <a href="/paginas/contact/" class="btn btn-primary">Stuur een tip</a>
-    </div>
-  </div>
-</section>
-
-<section class="about-section">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-content">
-        <h2 class="about-title">Over FactCheck Vlaanderen</h2>
-        <p>FactCheck Vlaanderen is een onafhankelijk platform dat politieke uitspraken onderzoekt op basis van feiten, data en statistieken. Onze missie is om burgers te helpen geïnformeerde beslissingen te nemen door accurate en betrouwbare informatie te bieden.</p>
-        <p>Ons team van ervaren journalisten en experts analyseert zorgvuldig elke uitspraak op basis van grondige research.</p>
-        <a href="/paginas/over-ons/" class="btn btn-outline">Meer over ons</a>
-      </div>
+      // Sort by selected criteria
+      sortOrder.addEventListener('change', applyFilters);
       
-      <div class="methodology-content">
-        <h2 class="methodology-title">Onze methodologie</h2>
-        <p>We volgen een strikt protocol bij het factchecken van uitspraken. Dit omvat het identificeren van de oorspronkelijke bron, het verzamelen van relevante gegevens, het raadplegen van experts, en het toekennen van een verdict op basis van nauwkeurig onderzoek.</p>
-        <a href="/paginas/methodologie/" class="btn btn-outline">Lees over onze methodologie</a>
-      </div>
-    </div>
-  </div>
-</section>
+      // Reset filters
+      if (resetButton) {
+        resetButton.addEventListener('click', function() {
+          verdictFilter.value = 'all';
+          sortOrder.value = 'date-desc';
+          applyFilters();
+        });
+      }
+      
+      function applyFilters() {
+        const verdict = verdictFilter.value;
+        const sort = sortOrder.value;
+        
+        // Create array from cards for sorting
+        const cardsArray = Array.from(factcheckCards);
+        
+        // Filter cards
+        let visibleCount = 0;
+        
+        cardsArray.forEach(card => {
+          const cardVerdict = card.getAttribute('data-verdict');
+          
+          if (verdict === 'all' || cardVerdict === verdict) {
+            card.classList.remove('filtered-out');
+            visibleCount++;
+          } else {
+            card.classList.add('filtered-out');
+          }
+        });
+        
+        // Show/hide no results message
+        if (visibleCount === 0) {
+          noFilterResults.style.display = 'block';
+        } else {
+          noFilterResults.style.display = 'none';
+        }
+        
+        // Sort cards
+        cardsArray.sort(function(a, b) {
+          if (sort === 'date-desc') {
+            return new Date(b.querySelector('time').getAttribute('datetime')) - 
+                   new Date(a.querySelector('time').getAttribute('datetime'));
+          } else if (sort === 'date-asc') {
+            return new Date(a.querySelector('time').getAttribute('datetime')) - 
+                   new Date(b.querySelector('time').getAttribute('datetime'));
+          } else if (sort === 'title-asc') {
+            return a.querySelector('.factcheck-card__title').textContent.localeCompare(
+                   b.querySelector('.factcheck-card__title').textContent);
+          } else if (sort === 'title-desc') {
+            return b.querySelector('.factcheck-card__title').textContent.localeCompare(
+                   a.querySelector('.factcheck-card__title').textContent);
+          }
+        });
+        
+        // Reorder DOM
+        cardsArray.forEach(card => {
+          factcheckGrid.appendChild(card);
+        });
+      }
+    }
+  });
+</script>
       
     </main>
     

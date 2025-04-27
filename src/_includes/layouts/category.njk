@@ -1,0 +1,312 @@
+---
+layout: layouts/base.njk
+bodyClass: category-template
+---
+
+<section class="category-header">
+  <div class="container">
+    <h1 class="category-page-title">{{ categoryTitle }}</h1>
+    {% if categoryDescription %}
+    <p class="category-page-description">{{ categoryDescription }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="category-content">
+  <div class="container">
+    <div class="debug-info" style="margin-bottom: 20px; padding: 15px; background: #f8f8f8; border: 1px solid #ddd;">
+      <p><strong>Debug Info:</strong></p>
+      <p>Category name: {{ categoryName }}</p>
+      <p>Collection size: 
+        {% if collections[categoryName] %}
+          {{ collections[categoryName].length }} items
+        {% else %}
+          Collection "{{ categoryName }}" not found
+        {% endif %}
+      </p>
+      
+      <p>All collections:
+        {%- for key, collection in collections -%}
+          {% if key != "all" and key != "factchecks" %}
+            {{ key }}({{ collection.length }}){% if not loop.last %}, {% endif %}
+          {% endif %}
+        {%- endfor -%}
+      </p>
+    </div>
+    
+    <div class="category-toolbar">
+      <div class="category-filter">
+        <label for="verdict-filter" class="filter-label">Filter op verdict:</label>
+        <select id="verdict-filter" class="filter-select">
+          <option value="all">Alle verdicts</option>
+          <option value="waar">Waar</option>
+          <option value="grotendeels-waar">Grotendeels waar</option>
+          <option value="half-waar">Half waar</option>
+          <option value="grotendeels-onwaar">Grotendeels onwaar</option>
+          <option value="onwaar">Onwaar</option>
+          <option value="misleidend">Misleidend</option>
+        </select>
+      </div>
+      
+      <div class="category-sort">
+        <label for="sort-order" class="filter-label">Sorteren op:</label>
+        <select id="sort-order" class="filter-select">
+          <option value="date-desc">Nieuwste eerst</option>
+          <option value="date-asc">Oudste eerst</option>
+          <option value="title-asc">Titel (A-Z)</option>
+          <option value="title-desc">Titel (Z-A)</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="factcheck-grid">
+      {% if collections[categoryName] and collections[categoryName].length > 0 %}
+        {% for factcheck in collections[categoryName] | sort(true, false, "date") %}
+          <article class="factcheck-card" data-verdict="{{ factcheck.data.verdict | lower | slug }}">
+            <a href="{{ factcheck.url }}" class="factcheck-card__link">
+              {% if factcheck.data.featured_image %}
+              <div class="factcheck-card__image-container">
+                <img 
+                  src="{{ factcheck.data.featured_image }}" 
+                  alt="{{ factcheck.data.imageAlt or factcheck.data.title }}" 
+                  class="factcheck-card__image"
+                  width="400" 
+                  height="225"
+                  loading="lazy"
+                >
+              </div>
+              {% endif %}
+              
+              <div class="factcheck-card__content">
+                <h2 class="factcheck-card__title">{{ factcheck.data.title }}</h2>
+                
+                <div class="factcheck-card__meta">
+                  <time datetime="{{ factcheck.date | isoDate }}">{{ factcheck.date | readableDate }}</time>
+                  
+                  <div class="factcheck-card__verdict verdict-{{ factcheck.data.verdict | lower | slug }}">
+                    {{ factcheck.data.verdict }}
+                  </div>
+                </div>
+                
+                <p class="factcheck-card__summary">{{ factcheck.data.samenvatting | truncate(150) }}</p>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div class="no-results">
+          <p>Geen factchecks gevonden in deze categorie.</p>
+          <p><small>De collectie "{{ categoryName }}" bevat geen artikelen of bestaat niet.</small></p>
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="no-filter-results" style="display: none;">
+      <p>Geen factchecks gevonden die aan de geselecteerde criteria voldoen.</p>
+      <button class="btn btn-primary reset-filters">Reset filters</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .category-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .category-page-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    color: white;
+  }
+  
+  .category-page-description {
+    font-size: 1.2rem;
+    max-width: 800px;
+    opacity: 0.9;
+  }
+  
+  .category-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--color-background-alt);
+    border-radius: var(--border-radius-md);
+  }
+  
+  .filter-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: var(--spacing-sm);
+  }
+  
+  .filter-select {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    background-color: white;
+  }
+  
+  .factcheck-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .no-results, .no-filter-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background-color: var(--color-background-alt);
+    border-radius: var(--border-radius-lg);
+  }
+  
+  .pagination {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+  }
+  
+  .pagination-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .pagination-item {
+    margin: 0 var(--spacing-xs);
+  }
+  
+  .pagination-item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-background-alt);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+  
+  .pagination-item a:hover {
+    background-color: var(--color-primary-light);
+    color: white;
+  }
+  
+  .pagination-item.active a {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  
+  .factcheck-card {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .factcheck-card.filtered-out {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .category-toolbar {
+      flex-direction: column;
+      gap: var(--spacing-md);
+      align-items: flex-start;
+    }
+    
+    .factcheck-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .category-page-title {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const verdictFilter = document.getElementById('verdict-filter');
+    const sortOrder = document.getElementById('sort-order');
+    const factcheckCards = document.querySelectorAll('.factcheck-card');
+    const factcheckGrid = document.querySelector('.factcheck-grid');
+    const noFilterResults = document.querySelector('.no-filter-results');
+    const resetButton = document.querySelector('.reset-filters');
+    
+    if (verdictFilter && sortOrder && factcheckGrid) {
+      // Filter by verdict
+      verdictFilter.addEventListener('change', applyFilters);
+      
+      // Sort by selected criteria
+      sortOrder.addEventListener('change', applyFilters);
+      
+      // Reset filters
+      if (resetButton) {
+        resetButton.addEventListener('click', function() {
+          verdictFilter.value = 'all';
+          sortOrder.value = 'date-desc';
+          applyFilters();
+        });
+      }
+      
+      function applyFilters() {
+        const verdict = verdictFilter.value;
+        const sort = sortOrder.value;
+        
+        // Create array from cards for sorting
+        const cardsArray = Array.from(factcheckCards);
+        
+        // Filter cards
+        let visibleCount = 0;
+        
+        cardsArray.forEach(card => {
+          const cardVerdict = card.getAttribute('data-verdict');
+          
+          if (verdict === 'all' || cardVerdict === verdict) {
+            card.classList.remove('filtered-out');
+            visibleCount++;
+          } else {
+            card.classList.add('filtered-out');
+          }
+        });
+        
+        // Show/hide no results message
+        if (visibleCount === 0) {
+          noFilterResults.style.display = 'block';
+        } else {
+          noFilterResults.style.display = 'none';
+        }
+        
+        // Sort cards
+        cardsArray.sort(function(a, b) {
+          if (sort === 'date-desc') {
+            return new Date(b.querySelector('time').getAttribute('datetime')) - 
+                   new Date(a.querySelector('time').getAttribute('datetime'));
+          } else if (sort === 'date-asc') {
+            return new Date(a.querySelector('time').getAttribute('datetime')) - 
+                   new Date(b.querySelector('time').getAttribute('datetime'));
+          } else if (sort === 'title-asc') {
+            return a.querySelector('.factcheck-card__title').textContent.localeCompare(
+                   b.querySelector('.factcheck-card__title').textContent);
+          } else if (sort === 'title-desc') {
+            return b.querySelector('.factcheck-card__title').textContent.localeCompare(
+                   a.querySelector('.factcheck-card__title').textContent);
+          }
+        });
+        
+        // Reorder DOM
+        cardsArray.forEach(card => {
+          factcheckGrid.appendChild(card);
+        });
+      }
+    }
+  });
+</script>
